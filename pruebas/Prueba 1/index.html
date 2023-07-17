@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="css/proyecto1.css" rel="stylesheet">
+</head>
+
+<body>
+    <section>
+        <br>
+        <div class="cuadro_1">
+            <div class="row" style="width: 90%;">
+                <h1>Libros disponibles: <span id="disponible">8</span></h1>
+                <div class="col">
+                    <label for="rango-input">Filtrar páginas:</label>
+                    <br>
+                    <input type="range" id="rango-input" min="10" max="100" step="10" value="50">
+                </div>
+                <div class="col">
+                    <label for="form-select" class="form-label">Filtrado por género</label>
+                    <select class="form-select" id="form-select">
+                        <option value="0">Seleccione una opción</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Ciencia-ficción">Ciencia ficción</option>
+                        <option value="Zombies">Zombies</option>
+                        <option value="Terror">Terror</option>
+                    </select>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-top: 2rem;">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"
+                            class="peliculas Fantasía">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1273763400i/8189620.jpg"
+                            class="peliculas Fantasía">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1550337333i/15868.jpg"
+                            class="peliculas Fantasía">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1657781256i/61439040.jpg"
+                            class="peliculas Ciencia-ficción">
+                            <br><br>
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1422626176i/24762432.jpg"
+                            class="peliculas Zombies">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1555447414i/44767458.jpg"
+                            class="peliculas Ciencia-ficción">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1653311117i/6691227.jpg"
+                            class="peliculas Terror">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1554437249i/6088007.jpg"
+                            class="peliculas Terror">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="js/books.json" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"></script>
+<script>
+    /*Filtro por el rango*/
+    var rango = document.getElementById('rango-input');
+    var imagen = document.getElementsByClassName('peliculas');
+    rango.addEventListener('input', function () {
+        var value = rango.value;
+        for (var i = 0; i < imagen.length; i++) {
+            imagen[i].style.width = value + '%';
+        }
+    });
+
+    /*Filtro por el género*/
+    document.addEventListener("DOMContentLoaded", function () {
+        var genero = document.getElementById('form-select');
+        var imagen = document.getElementsByClassName('peliculas');
+        var disponible = document.getElementById('disponible');
+        genero.addEventListener('change', function () {
+            var seleccion = genero.value;
+            var contador = 0;
+            for (var i = 0; i < imagen.length; i++) {
+                imagen[i].style.display = 'none';
+                if (imagen[i].classList.contains(seleccion) || seleccion === '0') {
+                    imagen[i].style.display = 'block';
+                    contador++;
+                }
+            }
+            disponible.textContent = contador;
+        });
+    });
+</script>
+</html>

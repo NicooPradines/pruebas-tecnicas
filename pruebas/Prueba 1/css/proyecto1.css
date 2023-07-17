@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Pangolin&display=swap');
+body {
+    background-color: black;
+    font-family: 'Pangolin', cursive;
+}
+h1 , label{
+    color:#fff;
+}
+h3 {
+    color: cornflowerblue;
+}
+#rango-input {
+    accent-color: transparent;
+}
+#form-select{
+    color: white;
+    background-color: black;
+}
+@media (min-width: 600px) {
+    body img {
+        width: 20%;
+
+    }
+
+    .cuadro_1 {
+        width: 50%;
+        border-style: solid;
+        border: 1px solid transparent;
+        border-color: burlywood;
+        border-radius: 10%;
+        padding: 3rem;
+    }
+
+    .cuadro_2 {
+        width: 45%;
+        border-style: solid;
+        border: 1px solid transparent;
+        border-color: burlywood;
+        border-radius: 10%;
+        padding: 3rem;
+        float: right;
+        margin-top: -45rem;
+        display: block;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    body img {
+        width: 80%;
+        margin-top: 2rem;
+        margin-left: 3rem;
+
+    }
+    #customRange1{
+        margin-left: 2rem;
+    }
+    #form-select{
+        margin-left: 2rem;
+    }
+
+}
